@@ -79,8 +79,8 @@ func socketHandler(data: [String:Any]) throws -> RequestHandler {
   }//end return
 }//end handler
 
-// default home page for jQuery+Reactive-Extension demo
-let homePageWithReativeExtensionJS = "<html><head><title>Unscrambler</title>\n" +
+// default home page
+let homePage = "<html><head><title>Unscrambler</title>\n" +
   "<script language=javascript type='text/javascript'>\nvar input, output;\n" +
   "function init()\n { input=document.getElementById('textInput'); \noutput=document.getElementById('results');\n" +
   "sock=new WebSocket('ws://' + window.location.host + '/puzzle', 'puzzle');\n" +
@@ -96,7 +96,7 @@ func handler(data: [String:Any]) throws -> RequestHandler {
   return {
     request, response in
     response.setHeader(.contentType, value: "text/html")
-    response.appendBody(string: homePageWithReativeExtensionJS)
+    response.appendBody(string: homePage)
     response.completed()
   }//end return
 }//end handler
